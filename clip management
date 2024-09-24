@@ -1,0 +1,13 @@
+''' Clipping the raster using the latitude and longitude information 
+'''
+import os
+inputPath='E:\kernel_density'
+outputPath ='E:kernel_density_forward' 
+dirs = os.listdir(inputPath)  # the file list can be used for loop
+for fileName in dirs:
+  name,ext=os.path.splitext(fileName) # split the file name into two parts: the file name and the extension
+  if ext =='.tif':
+    filePath=inputPath+'\\'+ fileName
+    outputFile=outputPath +'\\'+name +'_clip.tif'
+    arcpy.Clip_management(in_raster=filePath,rectangle="-90 90 90 -90",out_raster=outputFile, maintain_clipping_extent= MAINTAIN EXTENT”)
+print(u'Finished!')
